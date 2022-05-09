@@ -1,0 +1,46 @@
+﻿@using Sitecore.Mvc
+@model Sitecore.Mvc.Presentation.RenderingModel
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    @{
+        var test = @Html.Sitecore().CurrentItem;
+        var item = Sitecore.Context.Database.GetItem(test.ID);
+        var title = item["Browser title"];
+    }
+    <title>@title</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+</head>
+
+<body>
+
+    <!-- Fixed navbar -->
+    <div class="header-content">
+        @Html.Sitecore().Placeholder("main-header")
+    </div>
+
+    <!-- Begin page content -->
+    <div class="body-content">
+        @Html.Sitecore().Placeholder("main-content")
+    </div>
+
+    <div class="footer-content">
+        @Html.Sitecore().Placeholder("main-footer")
+    </div>
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="~/Bootstrap/js/bootstrap.min.js"></script> 
+    <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+</body>
+</html>

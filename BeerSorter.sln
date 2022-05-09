@@ -1,0 +1,41 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32414.318
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Foundation", "Foundation", "{A60C33FD-268C-4FD3-9597-DC3F2DB0BA22}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Feature", "Feature", "{15A36735-4416-421D-9F91-C908B9E821D9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Project", "Project", "{228FD4BE-3F4D-4D32-9C6A-A9A2BA1331F0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BeerSorter.Project.Website", "src\Project\Website\code\BeerSorter.Project.Website.csproj", "{E44F5FD9-04B9-46FB-B507-45AD4DFEF78B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BeerSorter.Feature.Header", "src\Feature\Header\code\BeerSorter.Feature.Header.csproj", "{4E5BB813-20DA-4177-AC22-ED2EB99530F5}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E44F5FD9-04B9-46FB-B507-45AD4DFEF78B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E44F5FD9-04B9-46FB-B507-45AD4DFEF78B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E44F5FD9-04B9-46FB-B507-45AD4DFEF78B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E44F5FD9-04B9-46FB-B507-45AD4DFEF78B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4E5BB813-20DA-4177-AC22-ED2EB99530F5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4E5BB813-20DA-4177-AC22-ED2EB99530F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4E5BB813-20DA-4177-AC22-ED2EB99530F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4E5BB813-20DA-4177-AC22-ED2EB99530F5}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{E44F5FD9-04B9-46FB-B507-45AD4DFEF78B} = {228FD4BE-3F4D-4D32-9C6A-A9A2BA1331F0}
+		{4E5BB813-20DA-4177-AC22-ED2EB99530F5} = {15A36735-4416-421D-9F91-C908B9E821D9}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {CEB71F7F-3E34-4B32-AB0C-2E71A9597392}
+	EndGlobalSection
+EndGlobal
