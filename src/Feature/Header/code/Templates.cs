@@ -13,7 +13,7 @@ namespace BeerSorter.Feature.Header
         {
             public static class Fields
             {
-                public static readonly ID LogoFieldID = new ID("{4C73CC87-77F3-4BF5-B52C-AEEA6FE69571}");
+                public static readonly ID LogoFieldID = new ID("{9282ACB1-F4A5-4096-9340-0B4A6207B234}");
             }
 
         }

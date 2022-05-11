@@ -15,6 +15,7 @@ namespace BeerSorter.Feature.Header.Controllers
                 LogoID = Templates.Header.Fields.LogoFieldID.ToString()
             };
 
+
             return View(headerModel);
         }
     }
