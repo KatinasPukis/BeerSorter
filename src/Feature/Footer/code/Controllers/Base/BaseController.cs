@@ -6,7 +6,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace BeerSorter.Foundation.Core.Extentions.Base
+namespace BeerSorter.Feature.Footer.Controllers.Base
 {
     public class BaseController : Controller
     {
