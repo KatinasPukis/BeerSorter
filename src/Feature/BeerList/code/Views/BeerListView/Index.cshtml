@@ -3,5 +3,37 @@
 @using Sitecore.Mvc.Presentation
 @using Sitecore.Data.Fields
 @using BeerSorter.Feature.BeerList
+@using BeerSorter.Foundation.Core.Extentions
 
-<h1>Works!</h1>
+<div class="Title">
+    <h1 style="text-align:center">Beers</h1>
+</div>
+
+<div class="row row-cols-1 row-cols-md-3 g-4">
+    @{
+        foreach (Item item in Sitecore.Context.Item.Children.Where(c => c.IsItemDerived(Templates.BeerList.BeerTemplateID)).ToList())
+        {
+            ImageField imgField = item.Fields[Templates.BeerList.Fields.ImageFieldID];
+            <div class="col">
+                <div class="card">
+                    <img src="@Sitecore.Resources.Media.MediaManager.GetMediaUrl(imgField.MediaItem);" class="card-img-top" alt="Error loading" />
+                    <div class="card-body">
+                        <h5 class="card-title">@item.Fields[Templates.BeerList.Fields.NameFieldID]</h5>
+                        <p class="card-text">Country of origin @item.Fields[Templates.BeerList.Fields.CountryOfOriginFieldID]</p>
+                        <p class="card-text">@item.Fields[Templates.BeerList.Fields.PriceFieldID]&euro;</p>
+                    </div>
+                </div>
+            </div>
+
+        }
+
+    }
+</div>
+<style>
+.card-img-top {
+    width: 100%;
+    height: 15vw;
+    object-fit: cover;
+}
+
+</style>
