@@ -108,10 +108,16 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Views\Breadcrumb\Index.cshtml" />
     <None Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\Base\BaseController.cs" />
+    <Compile Include="Controllers\BreadcrumbController.cs" />
+    <Compile Include="Models\BreadcrumbItemModel.cs" />
+    <Compile Include="Models\BreadcrumbViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Templates.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Views\web.config" />
@@ -123,10 +129,7 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Controllers\" />
-    <Folder Include="Models\" />
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
