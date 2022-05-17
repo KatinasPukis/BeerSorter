@@ -25,6 +25,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BeerList", "BeerList", "{98
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BeerSorter.Feature.BeerList", "src\Feature\BeerList\code\BeerSorter.Feature.BeerList.csproj", "{48932B06-A77E-49FD-85D4-F14A16C0D4E6}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Breadcrumb", "Breadcrumb", "{4885E704-8601-4B0B-AF46-271899CEBF4A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BeerSorter.Feature.Breadcrumb", "code\BeerSorter.Feature.Breadcrumb.csproj", "{50E73D46-1DD6-42D6-AEC8-A0D3E14C70B4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +55,10 @@ Global
 		{48932B06-A77E-49FD-85D4-F14A16C0D4E6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{48932B06-A77E-49FD-85D4-F14A16C0D4E6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{48932B06-A77E-49FD-85D4-F14A16C0D4E6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{50E73D46-1DD6-42D6-AEC8-A0D3E14C70B4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{50E73D46-1DD6-42D6-AEC8-A0D3E14C70B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{50E73D46-1DD6-42D6-AEC8-A0D3E14C70B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{50E73D46-1DD6-42D6-AEC8-A0D3E14C70B4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -64,6 +72,8 @@ Global
 		{42168A3D-B91C-4CA2-BC40-BD5F57A6EBD0} = {A60C33FD-268C-4FD3-9597-DC3F2DB0BA22}
 		{9877597A-5CD8-4407-BF81-9B36192DD5AD} = {15A36735-4416-421D-9F91-C908B9E821D9}
 		{48932B06-A77E-49FD-85D4-F14A16C0D4E6} = {9877597A-5CD8-4407-BF81-9B36192DD5AD}
+		{4885E704-8601-4B0B-AF46-271899CEBF4A} = {15A36735-4416-421D-9F91-C908B9E821D9}
+		{50E73D46-1DD6-42D6-AEC8-A0D3E14C70B4} = {4885E704-8601-4B0B-AF46-271899CEBF4A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {CEB71F7F-3E34-4B32-AB0C-2E71A9597392}

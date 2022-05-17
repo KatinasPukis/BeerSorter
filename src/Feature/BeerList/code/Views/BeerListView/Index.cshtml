@@ -4,38 +4,6 @@
 @using Sitecore.Data.Fields
 @using BeerSorter.Feature.BeerList
 @using BeerSorter.Foundation.Core.Extentions
-
-<div class="Title">
-    <h1 style="text-align:center">Beers</h1>
-</div>
-
-<section>
-    <div class="container">
-        <div class="card-deck">
-            @{
-                foreach (Item item in Sitecore.Context.Item.Children.Where(c => c.IsItemDerived(Templates.BeerList.BeerTemplateID)).ToList())
-                {
-                    ImageField imgField = item.Fields[Templates.BeerList.Fields.ImageFieldID];
-                    <a href="@Sitecore.Links.LinkManager.GetItemUrl(item)">
-                        <div class="card mx-auto">
-                            <img class="card-img-top img-fluid" src="@Sitecore.Resources.Media.MediaManager.GetMediaUrl(imgField.MediaItem);" alt="Card image cap" width="150" height="300">
-                            <div class="card-body">
-                                <h5 class="card-title">@item.Fields[Templates.BeerList.Fields.NameFieldID]</h5>
-                                <p class="card-text">Country of origin @item.Fields[Templates.BeerList.Fields.CountryOfOriginFieldID]</p>
-                                <p class="card-text">@item.Fields[Templates.BeerList.Fields.PriceFieldID]&euro;</p>
-                            </div>
-                            @*<div class="card-footer">
-                                    <small class="text-muted">Last updated 3 mins ago</small>
-                                </div>*@
-                        </div>
-                    </a>
-                }
-            }
-
-
-        </div>
-    </div>
-</section>
 <section>
     <section style="background-color: #eee;">
         <div class="text-center container py-5">
@@ -53,22 +21,22 @@
                                     <img src="@Sitecore.Resources.Media.MediaManager.GetMediaUrl(imgField.MediaItem);"
                                          class="w-50" />
                                     @*<a href="#!">*@
-                                        <div class="mask">
-                                            @*<div class="d-flex justify-content-start align-items-end h-100">
-                                                    <p>Country of origin @item.Fields[Templates.BeerList.Fields.CountryOfOriginFieldID]</p>
-                                                    <hr>
-                                                </div>*@
-                                            <div>
-                                                <p class="text-left">@item.Fields[Templates.BeerList.Fields.KindFieldID]</p>
-                                            </div>
-                                            <div>
-                                                <p class="text-left">@item.Fields[Templates.BeerList.Fields.CountryOfOriginFieldID]</p>
-                                            </div>
-                                            <hr>
+                                    <div class="mask">
+                                        @*<div class="d-flex justify-content-start align-items-end h-100">
+                                                <p>Country of origin @item.Fields[Templates.BeerList.Fields.CountryOfOriginFieldID]</p>
+                                                <hr>
+                                            </div>*@
+                                        <div>
+                                            <p class="text-left">Salis</p>
                                         </div>
-                                        <div class="hover-overlay">
-                                            <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+                                        <div>
+                                            <p class="text-left">@item.Fields[Templates.BeerList.Fields.CountryOfOriginFieldID]</p>
                                         </div>
+                                        <hr>
+                                    </div>
+                                    <div class="hover-overlay">
+                                        <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+                                    </div>
                                     @*</a>*@
                                 </div>
                                 <div class="card-body">
