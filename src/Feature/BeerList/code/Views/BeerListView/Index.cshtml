@@ -9,31 +9,81 @@
     <h1 style="text-align:center">Beers</h1>
 </div>
 
-<div class="row row-cols-1 row-cols-md-3 g-4">
-    @{
-        foreach (Item item in Sitecore.Context.Item.Children.Where(c => c.IsItemDerived(Templates.BeerList.BeerTemplateID)).ToList())
-        {
-            ImageField imgField = item.Fields[Templates.BeerList.Fields.ImageFieldID];
-            <div class="col">
-                <div class="card">
-                    <img src="@Sitecore.Resources.Media.MediaManager.GetMediaUrl(imgField.MediaItem);" class="card-img-top" alt="Error loading" />
-                    <div class="card-body">
-                        <h5 class="card-title">@item.Fields[Templates.BeerList.Fields.NameFieldID]</h5>
-                        <p class="card-text">Country of origin @item.Fields[Templates.BeerList.Fields.CountryOfOriginFieldID]</p>
-                        <p class="card-text">@item.Fields[Templates.BeerList.Fields.PriceFieldID]&euro;</p>
-                    </div>
-                </div>
+<section>
+    <div class="container">
+        <div class="card-deck">
+            @{
+                foreach (Item item in Sitecore.Context.Item.Children.Where(c => c.IsItemDerived(Templates.BeerList.BeerTemplateID)).ToList())
+                {
+                    ImageField imgField = item.Fields[Templates.BeerList.Fields.ImageFieldID];
+                    <a href="@Sitecore.Links.LinkManager.GetItemUrl(item)">
+                        <div class="card mx-auto">
+                            <img class="card-img-top img-fluid" src="@Sitecore.Resources.Media.MediaManager.GetMediaUrl(imgField.MediaItem);" alt="Card image cap" width="150" height="300">
+                            <div class="card-body">
+                                <h5 class="card-title">@item.Fields[Templates.BeerList.Fields.NameFieldID]</h5>
+                                <p class="card-text">Country of origin @item.Fields[Templates.BeerList.Fields.CountryOfOriginFieldID]</p>
+                                <p class="card-text">@item.Fields[Templates.BeerList.Fields.PriceFieldID]&euro;</p>
+                            </div>
+                            @*<div class="card-footer">
+                                    <small class="text-muted">Last updated 3 mins ago</small>
+                                </div>*@
+                        </div>
+                    </a>
+                }
+            }
+
+
+        </div>
+    </div>
+</section>
+<section>
+    <section style="background-color: #eee;">
+        <div class="text-center container py-5">
+            <h4 class="mt-4 mb-5"><strong>Bestsellers</strong></h4>
+
+            <div class="row">
+                @{
+                    foreach (Item item in Sitecore.Context.Item.Children.Where(c => c.IsItemDerived(Templates.BeerList.BeerTemplateID)).ToList())
+                    {
+                        ImageField imgField = item.Fields[Templates.BeerList.Fields.ImageFieldID];
+                        <div class="col-lg-4 col-md-12 mb-4">
+                            <div class="shadow-sm card">
+                                <div class="bg-image hover-zoom ripple ripple-surface ripple-surface-light"
+                                     data-mdb-ripple-color="light">
+                                    <img src="@Sitecore.Resources.Media.MediaManager.GetMediaUrl(imgField.MediaItem);"
+                                         class="w-50" />
+                                    @*<a href="#!">*@
+                                        <div class="mask">
+                                            @*<div class="d-flex justify-content-start align-items-end h-100">
+                                                    <p>Country of origin @item.Fields[Templates.BeerList.Fields.CountryOfOriginFieldID]</p>
+                                                    <hr>
+                                                </div>*@
+                                            <div>
+                                                <p class="text-left">@item.Fields[Templates.BeerList.Fields.KindFieldID]</p>
+                                            </div>
+                                            <div>
+                                                <p class="text-left">@item.Fields[Templates.BeerList.Fields.CountryOfOriginFieldID]</p>
+                                            </div>
+                                            <hr>
+                                        </div>
+                                        <div class="hover-overlay">
+                                            <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+                                        </div>
+                                    @*</a>*@
+                                </div>
+                                <div class="card-body">
+                                    <a href="" class="text-reset">
+                                        <h5 class="card-title mb-3">@item.Fields[Templates.BeerList.Fields.NameFieldID]</h5>
+                                    </a>
+                                    <h6 class="mb-3">@item.Fields[Templates.BeerList.Fields.PriceFieldID]&euro;</h6>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                }
             </div>
 
-        }
-
-    }
-</div>
-<style>
-.card-img-top {
-    width: 100%;
-    height: 15vw;
-    object-fit: cover;
-}
-
-</style>
+        </div>
+    </section>
+</section>
+@*174x420*@
