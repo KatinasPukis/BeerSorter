@@ -1,0 +1,38 @@
+﻿@using Sitecore.Mvc
+@using Sitecore.Data.Items
+@using Sitecore.Mvc.Presentation
+@using Sitecore.Data.Fields
+@using Sitecore
+@using BeerSorter.Feature.BeerDetails
+@model BeerSorter.Feature.BeerDetails.Models.BeerModel
+
+<h1>Works zjbs</h1>
+<h1>@Model.Name</h1>
+<h1>@Model.Brand</h1>
+<h1>@Model.CountryOfOrigin</h1>
+<hr />
+@{
+
+    @*string id = Model.Kind;
+    string[] idList = id.Split(new[] { "|" }, StringSplitOptions.None);
+    foreach (var word in idList)
+    {
+        var siteItem = Sitecore.Context.Database.Items.GetItem(word);
+        <h3>@siteItem.Fields[Templates.BeerDetails.Fields.KindTestFieldID]</h3>
+    }*@
+    foreach (var item in Model.Kind)
+    {
+        <h1>@item.Fields[Templates.BeerDetails.Fields.KindTestFieldID]</h1>
+    }
+}
+
+
+<hr />
+<h1>@Model.Price</h1>
+<h1>@Model.AlcoholStrenght</h1>
+<h1>@Model.Style</h1>
+<h1>@Html.Raw(Model.Description)</h1>
+<img src="@Model.Image">xd</img>
+<h1>@Model.Packaging</h1>
+<h1>@Model.Volume</h1>
+@*174x420*@

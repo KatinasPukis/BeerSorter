@@ -13,6 +13,7 @@
                 @{
                     foreach (Item item in Sitecore.Context.Item.Children.Where(c => c.IsItemDerived(Templates.BeerList.BeerTemplateID)).ToList())
                     {
+
                         ImageField imgField = item.Fields[Templates.BeerList.Fields.ImageFieldID];
                         <div class="col-lg-4 col-md-12 mb-4">
                             <div class="shadow-sm card">
