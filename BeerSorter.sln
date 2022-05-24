@@ -37,6 +37,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Registration", "Registratio
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BeerSorter.Feature.Registration", "src\Feature\Registration\code\BeerSorter.Feature.Registration.csproj", "{07741BA5-22D9-4E25-AEF1-E2ED316D313E}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Login", "Login", "{D5D1E262-1A02-4404-86D6-C30674BCD56C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BeerSorter.Feature.Login", "src\Feature\Login\code\BeerSorter.Feature.Login.csproj", "{19E1B5C2-77D2-4C71-946F-D4CD7F0324F7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -75,6 +79,10 @@ Global
 		{07741BA5-22D9-4E25-AEF1-E2ED316D313E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{07741BA5-22D9-4E25-AEF1-E2ED316D313E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{07741BA5-22D9-4E25-AEF1-E2ED316D313E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{19E1B5C2-77D2-4C71-946F-D4CD7F0324F7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{19E1B5C2-77D2-4C71-946F-D4CD7F0324F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{19E1B5C2-77D2-4C71-946F-D4CD7F0324F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{19E1B5C2-77D2-4C71-946F-D4CD7F0324F7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -94,6 +102,8 @@ Global
 		{17519F24-5C5C-4248-A257-99B288188CA6} = {9AE4D6ED-CF68-423D-A703-64AE76FECF60}
 		{F9494E1B-CA77-4DD1-9C96-1762A30BBCC4} = {15A36735-4416-421D-9F91-C908B9E821D9}
 		{07741BA5-22D9-4E25-AEF1-E2ED316D313E} = {F9494E1B-CA77-4DD1-9C96-1762A30BBCC4}
+		{D5D1E262-1A02-4404-86D6-C30674BCD56C} = {15A36735-4416-421D-9F91-C908B9E821D9}
+		{19E1B5C2-77D2-4C71-946F-D4CD7F0324F7} = {D5D1E262-1A02-4404-86D6-C30674BCD56C}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {CEB71F7F-3E34-4B32-AB0C-2E71A9597392}

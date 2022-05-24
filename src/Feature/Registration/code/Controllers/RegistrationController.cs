@@ -40,27 +40,22 @@ namespace BeerSorter.Feature.Registration.Controllers
 
             }
         }
+        // Simple code version no checks, just to test the user creation, roles not added
         private void CreateUser()
         {
             var model = GetDataFromForm();
-            string domain = @"sitecore";
+            string domain = @"extranet";
             string userName = string.Concat(model.Name, model.LastName);
             userName = string.Format(@"{0}\{1}", domain, userName);
             try
             {
                 string domainUser = Sitecore.Context.Domain.GetFullName(model.Email);
-
-                var comment = "Test";
                 Membership.CreateUser(userName, model.Password, model.Email);
-                //var user = Sitecore.Security.Accounts.User.Create(model.Name, model.Password);
                 Sitecore.Security.Accounts.User user = Sitecore.Security.Accounts.User.FromName(userName, true);
                 Sitecore.Security.UserProfile userProfile = user.Profile;
                 userProfile.FullName=string.Format("{0} {1}", model.Name, model.LastName);
                 userProfile.Email = model.Email;
                 userProfile.Comment = "testukas";
-                //user.Profile.Email = model.Email;
-                //user.Profile.Comment = "Test ar veikia";
-                //user.Profile.Save();
                 userProfile.Save();
 
             }
