@@ -11,8 +11,11 @@
 
             <div class="row">
                 @{
+                    
+
                     foreach (Item item in Sitecore.Context.Item.Children.Where(c => c.IsItemDerived(Templates.BeerList.BeerTemplateID)).ToList())
                     {
+                        string[] identifications = item[Templates.BeerList.Fields.KindTestFieldID].Split(new[] { "|" }, StringSplitOptions.None);
 
                         ImageField imgField = item.Fields[Templates.BeerList.Fields.ImageFieldID];
                         <div class="col-lg-4 col-md-12 mb-4">
@@ -21,13 +24,19 @@
                                      data-mdb-ripple-color="light">
                                     <img src="@Sitecore.Resources.Media.MediaManager.GetMediaUrl(imgField.MediaItem);"
                                          class="w-50" />
-                                    @*<a href="#!">*@
+                                    <a href="@Sitecore.Links.LinkManager.GetItemUrl(item)">
                                     <div class="mask">
                                         @*<div class="d-flex justify-content-start align-items-end h-100">
                                                 <p>Country of origin @item.Fields[Templates.BeerList.Fields.CountryOfOriginFieldID]</p>
                                                 <hr>
                                             </div>*@
                                         <div>
+                                            @{
+                                                foreach (var id in identifications)
+                                                {
+                                                    <p>@Html.Sitecore().Field("Kind", id)</p>
+                                                }
+                                            }
                                             <p class="text-left">Salis</p>
                                         </div>
                                         <div>
@@ -38,7 +47,7 @@
                                     <div class="hover-overlay">
                                         <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
                                     </div>
-                                    @*</a>*@
+                                    </a>
                                 </div>
                                 <div class="card-body">
                                     <a href="" class="text-reset">

@@ -6,33 +6,72 @@
 @using BeerSorter.Feature.BeerDetails
 @model BeerSorter.Feature.BeerDetails.Models.BeerModel
 
-<h1>Works zjbs</h1>
-<h1>@Model.Name</h1>
-<h1>@Model.Brand</h1>
-<h1>@Model.CountryOfOrigin</h1>
-<hr />
-@{
+<section class="py-5">
+    <div class="container px-4 px-lg-5 my-5">
+        <div class="row gx-4 gx-lg-5 align-items-center">
+            <div class="col-md-6"><img class="img-fluid" src="@Model.Image" alt="..." /></div>
+            <div class="col-md-6">
+                <div class="small mb-1">@Model.CountryOfOrigin</div>
+                <h1 class="display-5 fw-bolder">@Model.Name/@Model.Volume L</h1>
+                <div class="fs-5 mb-5">
+                    <span class="text-decoration-line-through">@Model.Price &euro;</span>
+                </div>
+                <hr />
+                <p class="lead">@Html.Raw(@Model.Description)</p>
+                <hr />
+                <div class="row">
 
-    @*string id = Model.Kind;
-    string[] idList = id.Split(new[] { "|" }, StringSplitOptions.None);
-    foreach (var word in idList)
-    {
-        var siteItem = Sitecore.Context.Database.Items.GetItem(word);
-        <h3>@siteItem.Fields[Templates.BeerDetails.Fields.KindTestFieldID]</h3>
-    }*@
-    foreach (var item in Model.Kind)
-    {
-        <h1>@item.Fields[Templates.BeerDetails.Fields.KindTestFieldID]</h1>
+                    <div class="col-12 col-md-6">
+                        <p class="font-weight-bold">Kind:</p>
+                        @{
+                            foreach (var item in Model.Kind)
+                            {
+                                <p>@item.Fields[Templates.BeerDetails.Fields.KindTestFieldID]</p>
+                            }
+                        }
+
+                    </div>
+
+
+                    <div class="col-12 col-md-6">
+                        <p class="font-weight-bold">Alcohol:</p>
+                        <p>@Model.AlcoholStrenght&percnt;</p>
+                    </div>
+
+                    <!-- Force next columns to break to new line -->
+                    <div class="w-100"></div>
+
+                    <div class="col-12 col-md-6">
+                        <p class="font-weight-bold">Style:</p>
+                        <p>@Model.Style</p>
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <p class="font-weight-bold">Packaging:</p>
+                        <p>@Model.Packaging</p>
+                    </div>
+                    <div class="w-100"></div>
+                    <div class="col-12 col-md-6">
+                        <p class="font-weight-bold">Packaging:</p>
+                        <p>@Model.Packaging</p>
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <p class="font-weight-bold">Volume:</p>
+                        <p>@Model.Volume L</p>
+                    </div>
+                </div>
+                
+            </div>
+
+
+
+        </div>
+    </div>
+</section>
+<style>
+    .col-12 {
+        display: flex;
+        background-color: #fafafc;
     }
-}
+</style>
 
-
-<hr />
-<h1>@Model.Price</h1>
-<h1>@Model.AlcoholStrenght</h1>
-<h1>@Model.Style</h1>
-<h1>@Html.Raw(Model.Description)</h1>
-<img src="@Model.Image">xd</img>
-<h1>@Model.Packaging</h1>
-<h1>@Model.Volume</h1>
 @*174x420*@

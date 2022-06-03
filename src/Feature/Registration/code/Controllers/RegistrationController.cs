@@ -15,6 +15,7 @@ namespace BeerSorter.Feature.Registration.Controllers
     {
         // constants used to specify the cshtml form input names
         public const string EMAIL_FIELD = "email";
+        public const string USERNAME_FIELD = "username";
         public const string NAME_FIELD = "name";
         public const string LASTNAME_FIELD = "lastname";
         public const string PASSWORD_FIELD = "password";
@@ -45,7 +46,8 @@ namespace BeerSorter.Feature.Registration.Controllers
         {
             var model = GetDataFromForm();
             string domain = @"extranet";
-            string userName = string.Concat(model.Name, model.LastName);
+            //string userName = string.Concat(model.Name, model.LastName);
+            string userName = model.Username;
             userName = string.Format(@"{0}\{1}", domain, userName);
             try
             {
@@ -71,6 +73,10 @@ namespace BeerSorter.Feature.Registration.Controllers
             NameValueCollection nvc = Request.Form;
             var model = new UserRegistrationModel();
 
+            if (!string.IsNullOrEmpty(nvc[USERNAME_FIELD]))
+            {
+                model.Username = nvc[USERNAME_FIELD];
+            }
 
             if (!string.IsNullOrEmpty(nvc[EMAIL_FIELD]))
 
@@ -94,6 +100,7 @@ namespace BeerSorter.Feature.Registration.Controllers
             {
                 model.RepeatPassword = nvc[REPEATPASSWORD_FIELD];
             }
+
 
 
             return model;

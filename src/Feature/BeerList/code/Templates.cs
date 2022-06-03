@@ -23,6 +23,7 @@ namespace BeerSorter.Feature.BeerList
                 public static readonly ID DescriptionFieldID = new ID("{16FA4E16-FAAE-4E16-BB83-6808BD5C5CA0}");
                 public static readonly ID CountryOfOriginFieldID = new ID("{6F78FEFB-890B-47B9-A121-EBAC1E0508AC}");
                 public static readonly ID KindFieldID = new ID("{149FCE7C-F8A5-4A43-838B-B83FAF48BEE7}");
+                public static readonly ID KindTestFieldID = new ID("{CA82D138-07DB-4288-B5E0-F2D59BC5E973}");
 
             }
         }
