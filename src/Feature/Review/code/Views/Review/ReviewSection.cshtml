@@ -11,7 +11,7 @@
     <h1 style="text-align:center">Comments</h1>
     @{
 
-        foreach (Item reviewfolder in Sitecore.Context.Item.Children)
+        foreach (Item reviewfolder in Sitecore.Context.Item.Children.Where(c => c.IsItemDerived(Templates.Review.ReviewFolderTemplateID)).ToList())
         {
             foreach (Item review in reviewfolder.Children)
             {
