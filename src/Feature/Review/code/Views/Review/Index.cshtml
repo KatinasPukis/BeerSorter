@@ -1,22 +1,43 @@
 ﻿@using Sitecore.Mvc
 
+<div class="modal-content">
+    <div class="card-body text-center">
+        <img src=" https://i.imgur.com/d2dKtI7.png" height="100" width="100">
+        <div class="comment-box text-center">
+            <h4>Add a comment</h4>
+            <div class="rating">
+                <form id="reviewForm" method="post">
+                    <input type="radio" name="rating" value="5" id="5">
 
+                    <label for="5">☆</label>
 
-<div class="comments">
-    <h1 style="text-align:center">Leave a comment</h1>
-    <h2 id="test"></h2>
-    <form id="commentForm" method="post">
-        <label for="username">Username:</label><br>
-        <input type="text" id="username" name="username" required>
-        <br>
-        <label for="comment">Comment:</label>
+                    <input type="radio" name="rating" value="4" id="4">
 
-        <textarea type="text" id="comment" name="comment" required></textarea>
-        <input class="submit" type="submit" value="Submit">
-        <input type="hidden" name="CommentSubmitted" value="true">
-    </form>
+                    <label for="4">☆</label>
 
+                    <input type="radio" name="rating" value="3" id="3">
+
+                    <label for="3">☆</label>
+
+                    <input type="radio" name="rating" value="2" id="2">
+
+                    <label for="2">☆</label>
+
+                    <input type="radio" name="rating" value="1" id="1">
+
+                    <label for="1">☆</label>
+                    <div class="comment-area">
+                        <textarea type="text" class="form-control" placeholder="Leave a review of the product" rows="4" name="comment" required></textarea>
+                    </div>
+                    <input class="btn btn-success send px-5" type="submit" value="Vidinis formoje">
+                    <input type="hidden" name="ReviewSubmitted" value="true">
+                </form>
+            </div>
+        </div>
+    </div>
 </div>
+
+
 <script language="javascript" type="text/javascript">
     if (window.history.replaceState) {
         window.history.replaceState(null, null, window.location.href);
@@ -25,7 +46,74 @@
 </script>
 
 <style type="text/css">
-    label {
+    @@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200&display=swap');
+
+    .comment-box {
+        padding: 5px
+    }
+
+    .comment-area textarea {
+        resize: none;
+        border: 1px solid #ff0000
+    }
+
+    .form-control:focus {
+        color: #495057;
+        background-color: #fff;
+        border-color: #ffffff;
+        outline: 0;
+        box-shadow: 0 0 0 1px rgb(255, 0, 0) !important
+    }
+
+    .send {
+        color: #fff;
+        background-color: #ff0000;
+        border-color: #ff0000
+    }
+
+        .send:hover {
+            color: #fff;
+            background-color: #f50202;
+            border-color: #f50202
+        }
+
+    .rating {
+        display: inline-flex;
+        margin-top: -10px;
+        flex-direction: row-reverse;
+    }
+
+    .reviewForm .input {
+        display: none
+    }
+
+    .reviewForm  .label {
+        position: relative;
+        width: 28px;
+        font-size: 35px;
+        color: #ff0000;
+        cursor: pointer;
+    }
+
+        .reviewForm  .label::before {
+            content: "\2605";
+            position: absolute;
+            opacity: 0
+        }
+
+        .reviewForm  .label:hover:before,
+        .reviewForm .label:hover ~ label:before {
+            opacity: 1 !important
+        }
+
+    .reviewForm .input:checked ~ label:before {
+        opacity: 1
+    }
+
+    .reviewForm:hover .input:checked ~ label:before {
+        opacity: 0.4
+    }
+    /*label {
         font-size: large;
     }
 
@@ -81,6 +169,6 @@
         border-radius: 4px;
         background-color: #f8f8f8;
         resize: none;
-    }
+    }*/
 </style>
 

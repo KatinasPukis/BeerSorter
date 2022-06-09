@@ -15,10 +15,11 @@ namespace BeerSorter.Feature.Review.Controllers
     public class ReviewController : BaseController
     {
         public const string USERNAME_FIELD = "username";
+        public const string RATING_FIELD = "rating";
         public const string COMMENT_FIELD = "comment";
         public const string COMMENT_FOLDER_NAME_FIELD = "ReviewFolder";
         public const string REQUEST_METHOD_FIELD = "POST";
-        public const string HIDDEN_INPUT_FIELD = "CommentSubmitted";
+        public const string HIDDEN_INPUT_FIELD = "ReviewSubmitted";
         // GET: Review
         public ActionResult Index()
         {
@@ -65,6 +66,8 @@ namespace BeerSorter.Feature.Review.Controllers
 
                         comment[Templates.Review.Fields.DateAdded] = model.DateAdded;
 
+                        comment[Templates.Review.Fields.RatingFieldID] = model.Rating;
+
                         comment.Editing.EndEdit();
 
                     }
@@ -91,13 +94,18 @@ namespace BeerSorter.Feature.Review.Controllers
             NameValueCollection nvc = Request.Form;
             var model = new ReviewModel();
 
-            if (!string.IsNullOrEmpty(nvc[USERNAME_FIELD]))
-            {
-                model.Username = nvc[USERNAME_FIELD];
-            }
+            string LoggedInUserName = Sitecore.Context.User.Name.ToString();
+
+            string[] test = LoggedInUserName.Split('\\');
+
+            model.Username = test[1];
             if (!string.IsNullOrEmpty(nvc[COMMENT_FIELD]))
             {
                 model.Comment = nvc[COMMENT_FIELD];
+            }
+            if (!string.IsNullOrEmpty(nvc[RATING_FIELD]))
+            {
+                model.Rating = nvc[RATING_FIELD];
             }
 
             model.DateAdded = Sitecore.DateUtil.IsoNow;

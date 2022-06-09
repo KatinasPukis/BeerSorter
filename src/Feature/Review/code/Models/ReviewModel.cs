@@ -10,5 +10,6 @@ namespace BeerSorter.Feature.Review.Models
         public string Username { get; set; }
         public string Comment { get; set; }
         public string DateAdded { get; set; }
+        public string Rating { get; set; }
     }
 }

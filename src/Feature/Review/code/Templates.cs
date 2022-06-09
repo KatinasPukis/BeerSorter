@@ -19,6 +19,7 @@ namespace BeerSorter.Feature.Review
                 public static readonly ID UsernameFieldID = new ID("{6EA77825-EF83-47DC-A49B-96157815EDDF}");
                 public static readonly ID CommentFieldID = new ID("{E3924006-D8B0-4BC6-BFF2-687E89194220}");
                 public static readonly ID DateAdded = new ID("{13A7C91B-0C8A-4408-A124-F7C57AF72958}");
+                public static readonly ID RatingFieldID = new ID("{A265DEC2-371C-4DC8-977B-D74FFFE86FBA}");
             }
 
         }
