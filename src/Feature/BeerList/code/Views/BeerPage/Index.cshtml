@@ -1,0 +1,176 @@
+﻿@using Sitecore.Mvc
+@using Sitecore.Data.Items;
+@using Sitecore.Mvc.Presentation
+@using Sitecore.Data.Fields
+@using BeerSorter.Feature.BeerList
+@using BeerSorter.Foundation.Core.Extentions
+@model BeerSorter.Feature.BeerList.Models.BeerViewModel
+<head>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/css/bootstrap-select.css" />
+
+</head>
+
+
+
+<div class="filter-form">
+    <div class="container-fluid">
+        <div class="row">
+            <form class="row" method="post">
+
+
+                <div class="col-md-2">
+                    <div class="dropdown">
+                        <select class="selectpicker" multiple data-live-search="true" title="Kind" name="Kind">
+                            @{
+
+                                foreach (var item in Model.BeerItems)
+                                {
+                                    foreach (Item beer in item.Kind)
+                                    {
+
+                                        <option value="@beer.Name">@beer.Name</option>
+                                    }
+
+                                }
+                            }
+                        </select>
+                    </div>
+
+                </div>
+                <div class="col-md-2">
+                    <div class="dropdown">
+                        <select class="selectpicker" multiple data-live-search="true" title="Style" name="Style">
+                            @{
+                                foreach (var beer in Model.BeerItems)
+                                {
+
+                                    <option value="@beer.Style">@beer.Style</option>
+                                }
+                            }
+                        </select>
+                    </div>
+
+                </div>
+                <div class="col-md-2">
+                    <div class="dropdown">
+                        <select class="selectpicker" multiple data-live-search="true" title="Alcohol Strenght" name="AlcoholStrenght">
+                            @{
+                                foreach (var beer in Model.BeerItems)
+                                {
+                                    <option value="@beer.AlcoholStrenght">@beer.AlcoholStrenght</option>
+                                }
+                            }
+                        </select>
+                    </div>
+
+                </div>
+                <div class="col-md-2">
+                    <div class="dropdown">
+                        <select class="selectpicker" multiple data-live-search="true" title="Volume" name="Volume">
+                            @{
+                                foreach (var beer in Model.BeerItems)
+                                {
+                                    <option value="@beer.AlcoholStrenght">@beer.Volume</option>
+                                }
+                            }
+                        </select>
+                    </div>
+
+                </div>
+                <div class="col-md-2">
+                    <div class="dropdown">
+                        <select class="selectpicker" multiple data-live-search="true" title="Packaging">
+                            @{
+                                foreach (var beer in Model.BeerItems)
+                                {
+                                    <option>@beer.Packaging</option>
+                                }
+                            }
+                        </select>
+                    </div>
+
+                </div>
+                <div class="col-md-2">
+                    <div class="d-flex justify-content-center">
+                        <button type="submit" value="Submit" class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">
+                            Filter
+                        </button>
+                        <input type="hidden" name="FilterSubmitted" value="true">
+                    </div>
+
+                </div>
+            </form>
+        </div>
+    </div>
+
+</div>
+
+<section>
+    <section style="background-color: #eee;">
+        <div class="text-center container py-5">
+            <h4 class="mt-4 mb-5"><strong>Bestsellers</strong></h4>
+
+            <div class="row" id="myTable">
+                @{
+
+
+                    foreach (var beer in Model.BeerItems)
+                    {
+
+                        <div class="col-lg-4 col-md-12 mb-4">
+                            <a href="@beer.LinkToSelf">
+                                <div class="shadow-sm card">
+                                    <div class="bg-image hover-zoom ripple ripple-surface ripple-surface-light"
+                                         data-mdb-ripple-color="light">
+                                        <img src="@beer.Image"
+                                             class="w-50" />
+
+                                        <div class="mask">
+                                            @*<div class="d-flex justify-content-start align-items-end h-100">
+                                                    <p>Country of origin @item.Fields[Templates.BeerList.Fields.CountryOfOriginFieldID]</p>
+                                                    <hr>
+                                                </div>*@
+                                            <div>
+                                                @foreach (Item item in beer.Kind)
+                                                {
+                                                    <p class="text-left">@item.Name</p>
+                                                }
+
+                                            </div>
+                                            <div>
+                                                <p class="text-left">@beer.CountryOfOrigin</p>
+                                            </div>
+                                            <hr>
+                                        </div>
+                                        <div class="hover-overlay">
+                                            <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+                                        </div>
+
+                                    </div>
+                                    <div class="card-body">
+                                        <a href="" class="text-reset">
+                                            <h5 class="card-title mb-3">@beer.Name</h5>
+                                        </a>
+                                        <h6 class="mb-3">@beer.Price &euro;</h6>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    }
+                }
+            </div>
+
+        </div>
+    </section>
+</section>
+
+
+
+
+<script>
+    $('select').selectpicker();
+
+
+</script>
