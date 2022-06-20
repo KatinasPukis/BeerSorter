@@ -28,6 +28,11 @@ namespace BeerSorter.Feature.Registration.Controllers
             CheckIfPost();
             return View();
         }
+        public ActionResult Redirect()
+        {
+            
+            return Redirect("/Beers");
+        }
         private void CheckIfPost() //checks if the http request is post
         {
             if (HttpContext.Request.HttpMethod == REQUEST_METHOD_FIELD) // if post then move forwatd
@@ -52,12 +57,14 @@ namespace BeerSorter.Feature.Registration.Controllers
             try
             {
                 string domainUser = Sitecore.Context.Domain.GetFullName(model.Email);
+                Role role = Role.FromName(@"extranet\BeerUser");
                 Membership.CreateUser(userName, model.Password, model.Email);
                 Sitecore.Security.Accounts.User user = Sitecore.Security.Accounts.User.FromName(userName, true);
+                user.Roles.Add(role);
                 Sitecore.Security.UserProfile userProfile = user.Profile;
                 userProfile.FullName=string.Format("{0} {1}", model.Name, model.LastName);
                 userProfile.Email = model.Email;
-                userProfile.Comment = "testukas";
+                userProfile.Comment = "BeerSorter user";
                 userProfile.Save();
 
             }

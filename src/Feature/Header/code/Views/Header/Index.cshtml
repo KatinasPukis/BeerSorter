@@ -1,6 +1,8 @@
 ﻿@using System.Web.Mvc.Html
 @using Sitecore.Links
 @using Sitecore.Mvc
+@using Sitecore.Security.Authentication;
+@using BeerSorter.Feature.Header.Controllers;
 @model BeerSorter.Feature.Header.Models.HeaderModel
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -48,14 +50,30 @@
             </form>*@
         <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-                <a class="nav-link" href=#>@Sitecore.Context.User.Name.ToString();</a>
+                <a class="nav-link" href='#'>@Sitecore.Context.User.Name.ToString();</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/Login">Login</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/Registration">Sign Up</a>
-            </li>
+            @{
+                if (Sitecore.Context.User.IsInRole("extranet\\BeerUser"))
+                {
+
+                    <li class="nav-item">
+
+                        <form method="post" action="@Url.Action("Logout", "Header")">
+                            <input type="submit" value="Logout" id="Submit" class="btn btn-default" />
+                        </form>
+                    </li>
+                }
+                else
+                {
+                    <li class="nav-item">
+                        <a class="nav-link" href="/Login">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/Registration">Sign Up</a>
+                    </li>
+
+                }
+            }
         </ul>
     </div>
 </nav>

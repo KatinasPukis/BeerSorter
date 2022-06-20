@@ -20,6 +20,8 @@ namespace BeerSorter.Feature.BeerList.Controllers
         public const string ALCOHOLSTRENGHT_FIELD = "AlcoholStrenght";
         public const string VOLUME_FIELD = "Volume";
         public const string PACKAGING_FIELD = "Packaging";
+        public const string COUNTRYOFORIGIN_FIELD = "CountryOfOrigin";
+        public const string RATING_FIELD = "Rating";
         public const string HIDDEN_INPUT_FIELD = "FilterSubmitted";
         public const string REQUEST_METHOD_FIELD = "POST";
         // GET: BeerPage
@@ -30,7 +32,11 @@ namespace BeerSorter.Feature.BeerList.Controllers
             {
                 var beerdata = GetDataFromForm();
                 var beerList = GetBeerList();
-                beerList = FilterBeer(beerList, beerdata);
+                if (beerdata != null)
+                {
+                    beerList = FilterBeer(beerList, beerdata);
+
+                }
                 return View(beerList);
             }
             else
@@ -39,17 +45,75 @@ namespace BeerSorter.Feature.BeerList.Controllers
                 return View(beerList);
             }
         }
-        private BeerViewModel FilterBeer(BeerViewModel beers, BeerItemModel searchbeer)
+        private BeerViewModel FilterBeer(BeerViewModel beerList, BeerItemModel searchbeer)
         {
             var newList = new BeerViewModel();
-
-            foreach (var item in beers.BeerItems)
+            var beerItemList = new List<BeerItemModel>();
+            try
             {
-                if (searchbeer.Packaging == item.Packaging)
+
+
+                foreach (var item in beerList.BeerItems)
                 {
-                    newList.BeerItems.Add(item);
+
+                    beerItemList.Add(item);
+
+
                 }
+                if(searchbeer.AlcoholStrenght != 0)
+                {
+                    string[] identifications = searchbeer.AlcoholStrenght.ToString().Split(new[] { "," }, StringSplitOptions.None);
+                    double test1 = searchbeer.AlcoholStrenght / 10; // first number
+                    double test2 = searchbeer.AlcoholStrenght % 10; // second number
+
+                    beerItemList = beerItemList.Where(x => x.AlcoholStrenght >= test1).ToList();
+                    beerItemList = beerItemList.Where(x => x.AlcoholStrenght <= test2).ToList();
+                }
+                if (searchbeer.VolumeList != null)
+                {
+                    string[] identifications = searchbeer.VolumeList.Split(new[] { "," }, StringSplitOptions.None);
+                    double test1 = Double.Parse(identifications[0]); // first number
+                    double test2 = Double.Parse(identifications[1]); // second number
+                    searchbeer.Volume = Double.Parse(identifications[0]);
+                    beerItemList = beerItemList.Where(x => x.Volume >= test1).ToList();
+                    beerItemList = beerItemList.Where(x => x.Volume <= test2).ToList();
+                }
+                if (searchbeer.Style != null)
+                {
+
+                    beerItemList = beerItemList.Where(x => x.Style == searchbeer.Style).ToList();
+                }
+                if (searchbeer.Packaging != null)
+                {
+                    beerItemList = beerItemList.Where(x => x.Packaging == searchbeer.Packaging).ToList();
+                }
+                if(searchbeer.CountryOfOrigin != null)
+                {
+                    beerItemList = beerItemList.Where(x => x.CountryOfOrigin == searchbeer.CountryOfOrigin).ToList();
+                }
+                if (searchbeer.Kind != null)
+                {
+                    beerItemList = beerItemList.Where(x => x.Kind == searchbeer.Kind).ToList();
+                }
+                if (searchbeer.Rating != null)
+                {
+                    string[] identifications = searchbeer.Rating.Split(new[] { "," }, StringSplitOptions.None);
+                    double ratingFrom = Double.Parse(identifications[0]);
+                    double ratingTo = Double.Parse(identifications[1]);
+                    beerItemList = beerItemList.Where(x => Double.Parse(x.Rating) >= ratingFrom).ToList();
+                    beerItemList = beerItemList.Where(x => Double.Parse(x.Rating) <= ratingTo).ToList();
+
+                }
+
+                //newList.BeerItems = beerItemList.Where(x => x.Packaging == searchbeer.Packaging || x.Style == searchbeer.Style || x.CountryOfOrigin == searchbeer.CountryOfOrigin || x.Kind == searchbeer.Kind).ToList();
+                newList.BeerItems = beerItemList;
             }
+            catch (Exception ex)
+            {
+                Sitecore.Diagnostics.Log.Error("error", ex);
+            }
+
+
 
             return newList;
         }
@@ -57,11 +121,9 @@ namespace BeerSorter.Feature.BeerList.Controllers
         {
             if (HttpContext.Request.HttpMethod == REQUEST_METHOD_FIELD) // if post then move forwatd
             {
-                if (Request[HIDDEN_INPUT_FIELD] == "true")
-                {
 
-                    return true;
-                }
+                return true;
+
 
 
             }
@@ -79,18 +141,31 @@ namespace BeerSorter.Feature.BeerList.Controllers
             {
                 model.Style = nvc[STYLE_FIELD];
             }
+            if (!string.IsNullOrEmpty(nvc[KIND_FIELD]))
+            {
 
+                model.Kind = nvc[KIND_FIELD];
+            }
             if (!string.IsNullOrEmpty(nvc[ALCOHOLSTRENGHT_FIELD]))
             {
-                model.AlcoholStrenght = nvc[ALCOHOLSTRENGHT_FIELD];
+                model.AlcoholStrenght = Double.Parse(nvc[ALCOHOLSTRENGHT_FIELD]);
             }
             if (!string.IsNullOrEmpty(nvc[VOLUME_FIELD]))
             {
-                model.Volume = nvc[VOLUME_FIELD];
+                model.VolumeList = nvc[VOLUME_FIELD];
+                //model.Volume = Double.Parse(nvc[VOLUME_FIELD]); //problema nes gauni 0.10.2 stringa
             }
             if (!string.IsNullOrEmpty(nvc[PACKAGING_FIELD]))
             {
                 model.Packaging = nvc[PACKAGING_FIELD];
+            }
+            if (!string.IsNullOrEmpty(nvc[COUNTRYOFORIGIN_FIELD]))
+            {
+                model.CountryOfOrigin = nvc[COUNTRYOFORIGIN_FIELD];
+            }
+            if (!string.IsNullOrEmpty(nvc[RATING_FIELD]))
+            {
+                model.Rating = nvc[RATING_FIELD];
             }
             return model;
         }
@@ -115,18 +190,6 @@ namespace BeerSorter.Feature.BeerList.Controllers
             }
             return beerList;
         }
-        private List<Item> GetKind(Item item)
-        {
-            List<Item> kinds = new List<Item>();
-            string[] identifications = item[Templates.BeerList.Fields.KindFieldID].Split(new[] { "|" }, StringSplitOptions.None);
-            foreach (var id in identifications)
-            {
-                kinds.Add(Sitecore.Context.Database.GetItem(id));
-            }
-
-            return kinds;
-
-        }
         private BeerItemModel AddBeerItemModel(Item beer)
         {
             ImageField imgField = beer.Fields[Templates.BeerList.Fields.ImageFieldID];
@@ -137,28 +200,18 @@ namespace BeerSorter.Feature.BeerList.Controllers
                 Name = beer[Templates.BeerList.Fields.NameFieldID],
                 Brand = beer[Templates.BeerList.Fields.BrandFieldID],
                 CountryOfOrigin = beer[Templates.BeerList.Fields.CountryOfOriginFieldID],
-                Kind = GetKind(beer),
+                Kind = beer[Templates.BeerList.Fields.KindFieldID],
                 Price = beer[Templates.BeerList.Fields.PriceFieldID],
-                AlcoholStrenght = beer[Templates.BeerList.Fields.AlcoholStrenghtFieldID],
+                AlcoholStrenght = Double.Parse(beer[Templates.BeerList.Fields.AlcoholStrenghtFieldID]),
                 Style = beer[Templates.BeerList.Fields.StyleFieldID],
                 Description = beer[Templates.BeerList.Fields.DescriptionFieldID],
                 Image = imagepath,
                 Packaging = beer[Templates.BeerList.Fields.PackagingFieldID],
-                Volume = beer[Templates.BeerList.Fields.VolumeFieldID],
+                Volume = Double.Parse(beer[Templates.BeerList.Fields.VolumeFieldID]),
                 LinkToSelf = LinkToSelf,
+                Rating = Math.Round(Double.Parse(beer[Templates.BeerList.Fields.RatingFieldID]),2).ToString()
 
             };
         }
-        public class BeerSearch
-        {
-            public string Name { get; set; }
-            public string Brand { get; set; }
-            public string Kind { get; set; }
-            public string Style { get; set; }
-            public string AlcoholStrenght { get; set; }
-            public string Packaging { get; set; }
-            public string Volume { get; set; }
-        }
-
     }
 }

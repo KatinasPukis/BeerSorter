@@ -12,6 +12,7 @@ namespace BeerSorter.Feature.BeerDetails
         {
             public static readonly ID BeerTemplateID = new ID("{67560B77-7094-4EF4-83E3-65E58A6B4C71}");
             public static readonly ID BeerDataFolderID = new ID("{BA3E6595-40CC-493E-B906-D91F7733E02B}");
+            
             public static class Fields
             {
                 public static readonly ID NameFieldID = new ID("{DC69A056-9DE6-4B9F-8C0A-19A89FE40456}");
@@ -26,6 +27,21 @@ namespace BeerSorter.Feature.BeerDetails
                 public static readonly ID PackagingFieldID = new ID("{F22535EB-BF7D-4F76-B9C4-5471CA0C4267}");
                 public static readonly ID VolumeFieldID = new ID("{CDAF7969-DDF2-4A95-AA83-94AF47CA28C3}");
                 public static readonly ID KindTestFieldID = new ID("{CA82D138-07DB-4288-B5E0-F2D59BC5E973}");
+                public static readonly ID RatingFieldID = new ID("{93BB8D5E-DB98-4BE4-B56F-D0F71C77EC02}");
+            }
+        }
+        public static class ReviewDetails
+        {
+            public static readonly ID ReviewFolderID = new ID("{6FE6EAD5-061A-4166-BB4D-F372CE1345D4}");
+            public static readonly ID ReviewItemID = new ID("{7893AD15-9718-47D5-9F74-476C39EE4A9C}");
+            public static class Fields
+            {
+                public static readonly ID UsernameFieldID = new ID("{6EA77825-EF83-47DC-A49B-96157815EDDF}");
+                public static readonly ID CommentFieldID = new ID("{E3924006-D8B0-4BC6-BFF2-687E89194220}");
+                public static readonly ID DateFieldID = new ID("{13A7C91B-0C8A-4408-A124-F7C57AF72958}");
+                public static readonly ID RatingFieldID = new ID("{A265DEC2-371C-4DC8-977B-D74FFFE86FBA}");
+
+
             }
         }
     }

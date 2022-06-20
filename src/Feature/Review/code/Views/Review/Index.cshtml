@@ -5,34 +5,34 @@
         <img src=" https://i.imgur.com/d2dKtI7.png" height="100" width="100">
         <div class="comment-box text-center">
             <h4>Add a comment</h4>
-            <div class="rating">
-                <form id="reviewForm" method="post">
-                    <input type="radio" name="rating" value="5" id="5">
+            @*<div class="rating">*@
+            <form class="rating" method="post">
+                <input type="radio" name="rating" value="5" id="5">
 
-                    <label for="5">☆</label>
+                <label for="5">☆</label>
 
-                    <input type="radio" name="rating" value="4" id="4">
+                <input type="radio" name="rating" value="4" id="4">
 
-                    <label for="4">☆</label>
+                <label for="4">☆</label>
 
-                    <input type="radio" name="rating" value="3" id="3">
+                <input type="radio" name="rating" value="3" id="3">
 
-                    <label for="3">☆</label>
+                <label for="3">☆</label>
 
-                    <input type="radio" name="rating" value="2" id="2">
+                <input type="radio" name="rating" value="2" id="2">
 
-                    <label for="2">☆</label>
+                <label for="2">☆</label>
 
-                    <input type="radio" name="rating" value="1" id="1">
+                <input type="radio" name="rating" value="1" id="1">
 
-                    <label for="1">☆</label>
-                    <div class="comment-area">
-                        <textarea type="text" class="form-control" placeholder="Leave a review of the product" rows="4" name="comment" required></textarea>
-                    </div>
-                    <input class="btn btn-success send px-5" type="submit" value="Vidinis formoje">
-                    <input type="hidden" name="ReviewSubmitted" value="true">
-                </form>
-            </div>
+                <label for="1">☆</label>
+                <div class="comment-area">
+                    <textarea type="text" class="form-control" placeholder="Leave a review of the product" rows="4" name="comment" required></textarea>
+                </div>
+                <input class="btn btn-success send px-5" type="submit" value="Vidinis formoje">
+                <input type="hidden" name="ReviewSubmitted" value="true">
+            </form>
+            @*</div>*@
         </div>
     </div>
 </div>
@@ -77,17 +77,17 @@
             border-color: #f50202
         }
 
-    .rating {
+    .form {
         display: inline-flex;
         margin-top: -10px;
         flex-direction: row-reverse;
     }
 
-    .reviewForm .input {
+    form > input {
         display: none
     }
 
-    .reviewForm  .label {
+    form > label {
         position: relative;
         width: 28px;
         font-size: 35px;
@@ -95,22 +95,22 @@
         cursor: pointer;
     }
 
-        .reviewForm  .label::before {
+        form > label::before {
             content: "\2605";
             position: absolute;
             opacity: 0
         }
 
-        .reviewForm  .label:hover:before,
-        .reviewForm .label:hover ~ label:before {
+        form > label:hover:before,
+        form > label:hover ~ label:before {
             opacity: 1 !important
         }
 
-    .reviewForm .input:checked ~ label:before {
+    form > input:checked ~ label:before {
         opacity: 1
     }
 
-    .reviewForm:hover .input:checked ~ label:before {
+    form:hover > input:checked ~ label:before {
         opacity: 0.4
     }
     /*label {

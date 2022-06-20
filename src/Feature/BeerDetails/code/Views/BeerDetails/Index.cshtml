@@ -24,12 +24,8 @@
 
                     <div class="col-12 col-md-6">
                         <p class="font-weight-bold">Kind:</p>
-                        @{
-                            foreach (var item in Model.Kind)
-                            {
-                                <p> @item.Fields[Templates.BeerDetails.Fields.KindTestFieldID]</p>
-                            }
-                        }
+
+                        <p> @Model.Kind</p>
 
                     </div>
 
@@ -59,8 +55,13 @@
                         <p class="font-weight-bold">Volume:</p>
                         <p> @Model.Volume L</p>
                     </div>
+                    <div class="w-100"></div>
+                    <div class="col-12 col-md-6">
+                        <p class="font-weight-bold">Rating:</p>
+                        <p> @Model.Rating&#9733;</p>
+                    </div>
                 </div>
-                
+
             </div>
 
 

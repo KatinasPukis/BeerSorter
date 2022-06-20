@@ -10,7 +10,7 @@
                         <div class="card-body p-5">
                             <h2 class="text-uppercase text-center mb-5">Create an account</h2>
 
-                            <form id="commentForm" method="post" onsubmit="return verifyPassword()">
+                            <form id="commentForm" method="post" target="/Beers" >
 
                                 <div class="form-outline mb-4">
                                     <input type="text" id="username" name="username" class="form-control form-control-lg" required />
@@ -82,7 +82,7 @@
         }
 
         //maximum length of password validation
-        if (pw.length > 15) {
+        if (pw.length > 8) {
             document.getElementById("message").innerHTML = "**Password length must not exceed 15 characters";
             return false;
         } else {

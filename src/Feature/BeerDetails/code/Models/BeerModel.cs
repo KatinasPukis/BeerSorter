@@ -12,7 +12,7 @@ namespace BeerSorter.Feature.BeerDetails.Models
         public string Name { get; set; }
         public string Brand { get; set; }
         public string CountryOfOrigin { get; set; }
-        public List<Item> Kind { get; set; }
+        public string Kind { get; set; }
         public string Price { get; set; }
         public string AlcoholStrenght { get; set; }
         public string Style { get; set; }
@@ -20,6 +20,7 @@ namespace BeerSorter.Feature.BeerDetails.Models
         public string Image { get; set; }
         public string Packaging { get; set; }
         public string Volume { get; set; }
+        public double Rating { get; set; }
 
 
     }

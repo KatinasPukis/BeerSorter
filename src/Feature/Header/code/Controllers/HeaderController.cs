@@ -1,4 +1,5 @@
 ﻿using BeerSorter.Feature.Header.Models;
+using Sitecore.Security.Authentication;
 using System.Web.Mvc;
 
 namespace BeerSorter.Feature.Header.Controllers
@@ -17,6 +18,11 @@ namespace BeerSorter.Feature.Header.Controllers
             
 
             return View(headerModel);
+        }
+        public ActionResult Logout()
+        {
+            AuthenticationManager.Logout();
+            return Redirect("/Beers");
         }
     }
 }

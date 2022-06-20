@@ -12,7 +12,7 @@
                         <div class="card-body p-5">
                             <h2 class="text-uppercase text-center mb-5">Login</h2>
 
-                            <form id="commentForm" method="post" onsubmit="return verifyPassword()">
+                            <form id="commentForm" method="post">
 
                                 <div class="form-outline mb-4">
                                     <input type="text" id="username" name="username" class="form-control form-control-lg" required />
@@ -23,10 +23,9 @@
                                     <label class="form-label" for="password">Password</label>
                                 </div>          
                                 <div class="d-flex justify-content-center">
-                                    <button type="submit" value="Submit" class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">
-                                        Login
-                                    </button>
+                                    <input type="submit" value="Submit" id="submitBtn" onclick="myFunction()" class ="btn btn-success btn-block btn-lg gradient-custom-4 text-body">
                                     <input type="hidden" name="CommentSubmitted" value="true">
+
                                 </div>
 
                             </form>
@@ -39,8 +38,8 @@
     </div>
 </section>
 <script language="javascript" type="text/javascript">
-    if (window.history.replaceState) {
-        window.history.replaceState(null, null, window.location.href);
+    function myFunction() {
+        window.location.href = "/Beers";
     }
 
 </script>

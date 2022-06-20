@@ -12,6 +12,7 @@ namespace BeerSorter.Feature.BeerList
         {
             public static readonly ID BeerTemplateID = new ID("{67560B77-7094-4EF4-83E3-65E58A6B4C71}");
             public static readonly ID BeerDataFolderID = new ID("{BA3E6595-40CC-493E-B906-D91F7733E02B}");
+            public static readonly ID BeerProfilingFieldID = new ID("{72B00341-55D6-4048-8771-E470E80B99D0}");
             public static class Fields
             {
                 public static readonly ID NameFieldID = new ID("{DC69A056-9DE6-4B9F-8C0A-19A89FE40456}");
@@ -26,6 +27,7 @@ namespace BeerSorter.Feature.BeerList
                 public static readonly ID PackagingFieldID = new ID("{F22535EB-BF7D-4F76-B9C4-5471CA0C4267}");
                 public static readonly ID VolumeFieldID = new ID("{CDAF7969-DDF2-4A95-AA83-94AF47CA28C3}");
                 public static readonly ID KindTestFieldID = new ID("{CA82D138-07DB-4288-B5E0-F2D59BC5E973}");
+                public static readonly ID RatingFieldID = new ID("{93BB8D5E-DB98-4BE4-B56F-D0F71C77EC02}");
 
             }
         }
