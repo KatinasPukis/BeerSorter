@@ -1,0 +1,66 @@
+﻿@using Sitecore.Mvc
+@using Sitecore.Data.Items;
+@using Sitecore.Mvc.Presentation
+@using Sitecore.Data.Fields
+@using BeerSorter.Feature.BeerList
+@using BeerSorter.Foundation.Core.Extentions
+<section>
+    <section style="background-color: #eee;">
+        <div class="text-center container py-5">
+            <h4 class="mt-4 mb-5"><strong>Recommended</strong></h4>
+            <div class="row">
+                @{
+                    var datasource = RenderingContext.CurrentOrNull.Rendering.Item;
+
+                    foreach (Item item in Sitecore.Context.Item.Children.Where(c => c.IsItemDerived(Templates.BeerList.BeerTemplateID)).ToList())
+                    {
+                        string[] identifications = item[Templates.BeerList.Fields.KindTestFieldID].Split(new[] { "|" }, StringSplitOptions.None);
+
+                        ImageField imgField = item.Fields[Templates.BeerList.Fields.ImageFieldID];
+                        <div class="col-lg-4 col-md-12 mb-4">
+                            <div class="shadow-sm card">
+                                <div class="bg-image hover-zoom ripple ripple-surface ripple-surface-light"
+                                     data-mdb-ripple-color="light">
+                                    <img src="@Sitecore.Resources.Media.MediaManager.GetMediaUrl(imgField.MediaItem);"
+                                         class="w-50" />
+                                    <a href="@Sitecore.Links.LinkManager.GetItemUrl(item)">
+                                    <div class="mask">
+                                        @*<div class="d-flex justify-content-start align-items-end h-100">
+                                                <p>Country of origin @item.Fields[Templates.BeerList.Fields.CountryOfOriginFieldID]</p>
+                                                <hr>
+                                            </div>*@
+                                        <div>
+                                            @{
+                                                foreach (var id in identifications)
+                                                {
+                                                    <p>@Html.Sitecore().Field("Kind", id)</p>
+                                                }
+                                            }
+                                            <p class="text-left">Salis</p>
+                                        </div>
+                                        <div>
+                                            <p class="text-left">@item.Fields[Templates.BeerList.Fields.CountryOfOriginFieldID]</p>
+                                        </div>
+                                        <hr>
+                                    </div>
+                                    <div class="hover-overlay">
+                                        <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+                                    </div>
+                                    </a>
+                                </div>
+                                <div class="card-body">
+                                    <a href="" class="text-reset">
+                                        <h5 class="card-title mb-3">@item.Fields[Templates.BeerList.Fields.NameFieldID]</h5>
+                                    </a>
+                                    <h6 class="mb-3">@item.Fields[Templates.BeerList.Fields.PriceFieldID]&euro;</h6>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                }
+            </div>
+
+        </div>
+    </section>
+</section>
+@*174x420*@

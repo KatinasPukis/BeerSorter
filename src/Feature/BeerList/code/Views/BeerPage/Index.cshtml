@@ -1,0 +1,343 @@
+﻿@using Sitecore.Mvc
+@using Sitecore.Data.Items;
+@using Sitecore.Mvc.Presentation
+@using Sitecore.Data.Fields
+@using BeerSorter.Feature.BeerList
+@using BeerSorter.Foundation.Core.Extentions
+@model BeerSorter.Feature.BeerList.Models.BeerViewModel
+<head>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/css/bootstrap-select.css" />
+
+</head>
+
+
+
+<div class="filter-form">
+    <div class="container-fluid">
+        <div class="row">
+            <form class="row" method="post">
+
+                @*--Kind--*@
+                <div class="col-md-2">
+                    <div class="dropdown">
+                        <select class="selectpicker" id="basic" title="Kind" name="Kind">
+
+
+                            <option value="Aromatized beer">Aromatized beer</option>
+                            <option value="Cocktail beer">Cocktail beer</option>
+                            <option value="Dark beer">Dark beer</option>
+                            <option value="Ginger beer">Ginger beer</option>
+                            <option value="Kraft beer">Kraft beer</option>
+                            <option value="Light beer">Light beer</option>
+                            <option value="Non alcoholic beer">Non alcoholic beer</option>
+                            <option value="Unfiltered beer">Unfiltered beer</option>
+                            <option value="Wheat beer">Wheat beer</option>
+
+                        </select>
+                    </div>
+
+                </div>
+                @*--Style--*@
+                <div class="col-md-2">
+                    <div class="dropdown">
+                        <select class="selectpicker" id="basic" title="Style" name="Style">
+                            <option value="Ale">Ale</option>
+                            <option value="Bock">Bock</option>
+                            <option value="Dubbel">Dubbel</option>
+                            <option value="Hefeweizen">Hefeweizen</option>
+                            <option value="IPA">IPA</option>
+                            <option value="Lager">Lager</option>
+                            <option value="Lambic">Lambic</option>
+                            <option value="Light Beer">Light Beer</option>
+                            <option value="Pilsner">Pilsner</option>
+                            <option value="Porter">Porter</option>
+                            <option value="Stout">Stout</option>
+
+                        </select>
+                    </div>
+
+                </div>
+                @*--Alcohol Strenght--*@
+                <div class="col-md-2">
+                    <div class="dropdown">
+                        <select class="selectpicker" multiple data-header="Select Alcohol Strenght" title="Alcohol Strenght" name="AlcoholStrenght">
+
+                            <optgroup label="From" data-max-options="1">
+                                <option value="0">0%</option>
+                                <option value="1">1%</option>
+                                <option value="2">2%</option>
+                                <option value="3">3%</option>
+                                <option value="4">4%</option>
+                                <option value="5">5%</option>
+                                <option value="6">6%</option>
+                                <option value="7">7%</option>
+                                <option value="8">8%</option>
+                                <option value="9">9%</option>
+                                <option value="10">10%</option>
+                                <option value="11">11%</option>
+                            </optgroup>
+                            <optgroup label="To" data-max-options="1">
+                                <option value="0">0%</option>
+                                <option value="1">1%</option>
+                                <option value="2">2%</option>
+                                <option value="3">3%</option>
+                                <option value="4">4%</option>
+                                <option value="5">5%</option>
+                                <option value="6">6%</option>
+                                <option value="7">7%</option>
+                                <option value="8">8%</option>
+                                <option value="9">9%</option>
+                                <option value="10">10%</option>
+                                <option value="11">11%</option>
+                            </optgroup>
+
+
+                        </select>
+                    </div>
+
+                </div>
+                @*--Volume--*@
+                <div class="col-md-2">
+                    <div class="dropdown">
+
+                        <select class="selectpicker" multiple data-header="Select Alcohol Volume" title="Volume" name="Volume">
+
+                            <optgroup label="From" data-max-options="1">
+                                <option value="0.1">0.1L</option>
+                                <option value="0.2">0.2L</option>
+                                <option value="0.3">0.3L</option>
+                                <option value="0.4">0.4L</option>
+                                <option value="0.5">0.5L</option>
+                                <option value="0.6">0.6L</option>
+                                <option value="0.7">0.7L</option>
+                                <option value="0.8">0.8L</option>
+                                <option value="0.9">0.9L</option>
+                                <option value="1">1L</option>
+                                <option value="1.5">1.5L</option>
+                                <option value="1.75">1.75L</option>
+                                <option value="2">2L</option>
+                            </optgroup>
+                            <optgroup label="To" data-max-options="1">
+                                <option value="0.1">0.1L</option>
+                                <option value="0.2">0.2L</option>
+                                <option value="0.3">0.3L</option>
+                                <option value="0.4">0.4L</option>
+                                <option value="0.5">0.5L</option>
+                                <option value="0.6">0.6L</option>
+                                <option value="0.7">0.7L</option>
+                                <option value="0.8">0.8L</option>
+                                <option value="0.9">0.9L</option>
+                                <option value="1">1L</option>
+                                <option value="1.5">1.5L</option>
+                                <option value="1.75">1.75L</option>
+                                <option value="2">2L</option>
+                                @*<option value="0.1">0.1L</option>
+                                    <option value="0.2">0.2L</option>
+                                    <option value="0.3">0.3L</option>
+                                    <option value="0.4">0.4L</option>
+                                    <option value="0.5">0.5L</option>
+                                    <option value="0.6">0.6L</option>
+                                    <option value="0.7">0.7L</option>
+                                    <option value="0.8">0.8L</option>
+                                    <option value="0.9">0.9L</option>
+                                    <option value="1">1L</option>
+                                    <option value="1.5">1.5L</option>
+                                    <option value="1.75">1.75L</option>
+                                    <option value="2">2L</option>*@
+                            </optgroup>
+
+
+                        </select>
+
+                    </div>
+
+                </div>
+                @*--Packaging--*@
+                <div class="col-md-2">
+                    <div class="dropdown">
+                        <select class="selectpicker" id="basic" title="Packaging" name="Packaging">
+
+                            <option value="Metal">Metal</option>
+                            <option value="Glass">Glass</option>
+                        </select>
+                    </div>
+
+                </div>
+                @*--Country of origin--*@
+                <div class="col-md-2">
+                    <div class="dropdown">
+                        <select class="selectpicker" id="basic" title="Country Of Origin" name="CountryOfOrigin">
+
+                            <option value="Austira">Austria</option>
+                            <option value="Belgium">Belgium</option>
+                            <option value="Czech Republic">Czech Republic</option>
+                            <option value="Denmark">Denmark</option>
+                            <option value="Estonia">Estonia</option>
+                            <option value="France">France</option>
+                            <option value="Germany">Germany</option>
+                            <option value="Great Britain">Great Britain</option>
+                            <option value="Iceland">Iceland</option>
+                            <option value="Ireland">Ireland</option>
+                            <option value="Italy">Italy</option>
+                            <option value="Japan">Japan</option>
+                            <option value="Latvia">Latvia</option>
+                            <option value="Lithuania">Lithuania</option>
+                            <option value="Mexico">Mexico</option>
+                            <option value="Netherlands">Netherlands</option>
+                            <option value="New Zealand">New Zealand</option>
+                            <option value="Norway">Norway</option>
+                            <option value="Philippines">Philippines</option>
+                            <option value="Scotland">Scotland</option>
+                            <option value="Spain">Spain</option>
+                            <option value="Sweden">Sweden</option>
+                            <option value="Turkey">Turkey</option>
+                            <option value="USA">USA</option>
+                        </select>
+                    </div>
+
+                </div>
+                <div class="col-md-2">
+                    <select class="selectpicker" multiple data-header="Select Rating range" title="Rating" name="Rating">
+
+                        <optgroup label="From" data-max-options="1">
+                            <option value="1">1&#9733;</option>
+                            <option value="2">2&#9733;</option>
+                            <option value="3">3&#9733;</option>
+                            <option value="4">4&#9733;</option>
+                            <option value="5">5&#9733;</option>
+
+                        </optgroup>
+                        <optgroup label="To" data-max-options="1">
+                            <option value="1">1&#9733;</option>
+                            <option value="2">2&#9733;</option>
+                            <option value="3">3&#9733;</option>
+                            <option value="4">4&#9733;</option>
+                            <option value="5">5&#9733;</option>
+                        </optgroup>
+
+
+                    </select>
+
+                </div>
+                <div class="col-md-2">
+                    <div class="input-group">
+                        <div class="form-outline">
+                            <input type="search" id="search" class="form-control" data-search />
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-md-2">
+                    <div class="d-flex justify-content-center">
+                        <button type="submit" value="Submit" class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">
+                            Filter
+                        </button>
+                        <input type="hidden" name="FilterSubmitted" value="true">
+                    </div>
+
+                </div>
+
+            </form>
+        </div>
+    </div>
+
+</div>
+
+<section>
+    <section style="background-color: #eee;">
+        <div class="text-center container py-5">
+            <h4 class="mt-4 mb-5"><strong>Beer</strong></h4>
+
+            <div class="row" id="myTable">
+                @{
+
+
+                    foreach (var beer in Model.BeerItems)
+                    {
+                        string trimmed = String.Concat(beer.Name.ToString().Where(c => !Char.IsWhiteSpace(c)));
+                        <div class="col-lg-4 col-md-12 mb-4" id="@beer.Name-container">
+                            <a href="@beer.LinkToSelf" target="_blank">
+                                <div class="shadow-sm card">
+                                    <div class="bg-image hover-zoom ripple ripple-surface ripple-surface-light"
+                                         data-mdb-ripple-color="light">
+                                        <img src="@beer.Image"
+                                             class="w-50" />
+
+                                        <div class="mask">
+                                            <div>
+
+                                                <p class="text-left">Kind: @beer.Kind</p>
+
+                                            </div>
+                                            <div>
+
+                                                <p class="text-left">Style: @beer.Style</p>
+
+                                            </div>
+                                            <div>
+                                                <p class="text-left">Country: @beer.CountryOfOrigin</p>
+                                            </div>
+                                            <div>
+                                                <p class="text-left">Rating:@beer.Rating&#9733;</p>
+                                            </div>
+                                            <hr>
+                                        </div>
+                                        <div class="hover-overlay">
+                                            <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+                                        </div>
+
+                                    </div>
+                                    <div class="card-body">
+                                        <a href="" class="text-reset">
+                                            <h5 class="card-title mb-3" beer-name>@beer.Name</h5>
+                                        </a>
+                                        <h6 class="mb-3">@beer.Price &euro;</h6>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    }
+                }
+            </div>
+
+        </div>
+    </section>
+</section>
+
+
+
+
+<script language="javascript" type="text/javascript">
+    const searchInput = document.querySelector("[data-search]")
+    searchInput.addEventListener("input", (e) => {
+        var names = document.querySelectorAll('[beer-name]');
+        var search = e.target.value;
+        var namesArray = [];
+
+        names.forEach(el => namesArray.push(el.textContent));
+
+        namesArray.forEach(e => {
+            document.getElementById(e + "-container").style.display = "none";
+        })
+
+        var filtered = namesArray.filter(e => {
+            return e.toLowerCase().includes(search);
+        })
+
+
+        filtered.forEach(name => {
+            document.getElementById(name + "-container").style.display = "block";
+        })
+    })
+
+    if (window.history.replaceState) {
+        window.history.replaceState(null, null, window.location.href);
+    }
+</script>
+<style>
+    .hide {
+        display: none;
+    }
+</style>

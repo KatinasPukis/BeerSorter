@@ -1,0 +1,128 @@
+﻿@using Sitecore.Mvc
+@using Sitecore.Data.Items;
+@using Sitecore.Mvc.Presentation
+@using Sitecore.Data.Fields
+@using BeerSorter.Foundation.Core.Extentions
+@using BeerSorter.Feature.Review
+@model Sitecore.Mvc.Presentation.RenderingModel
+
+
+@*<div class="commentSection">
+        <h1 style="text-align:center">Comments</h1>
+        @{
+
+            foreach (Item reviewfolder in Sitecore.Context.Item.Children.Where(c => c.IsItemDerived(Templates.Review.ReviewFolderTemplateID)).ToList())
+            {
+                foreach (Item review in reviewfolder.Children)
+                {
+                    if (review != null)
+                    {
+                        Sitecore.Data.Fields.DateField dateTimeField = review.Fields[Templates.Review.Fields.DateAdded];
+                        <div class="commentBox">
+                            <h3>@Html.Sitecore().Field(review.Fields[Templates.Review.Fields.UsernameFieldID].Name, review)</h3>
+                            <h4>@Html.Sitecore().Field(comment.Fields[Templates.Comment.Fields.EmailFieldID].Name, comment)</h4>
+                            <p>@Html.Sitecore().Field(review.Fields[Templates.Review.Fields.CommentFieldID].Name, review)</p>
+                            <p>@dateTimeField.DateTime.ToString("yyyy/MM/dd HH:mm:ss")</p>
+                            <br />
+                        </div>
+                    }
+                    else
+                    {
+                        <h1>There are no new comments!</h1>
+                    }
+
+
+
+                }
+            }
+        }
+
+    </div>*@
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            @{
+                foreach (Item reviewfolder in Sitecore.Context.Item.Children.Where(c => c.IsItemDerived(Templates.Review.ReviewFolderTemplateID)).ToList())
+                {
+                    foreach (Item review in reviewfolder.Children)
+                    {
+                        if (review != null)
+                        {
+                            Sitecore.Data.Fields.DateField dateTimeField = review.Fields[Templates.Review.Fields.DateAdded];
+                            <div class="media g-mb-30 media-comment">
+                                <img class="d-flex g-width-50 g-height-50 rounded-circle g-mt-3 g-mr-15" src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Image Description">
+                                <div class="media-body u-shadow-v18 g-bg-secondary g-pa-30">
+                                    <div class="g-mb-15">
+                                        <h5 class="h5 g-color-gray-dark-v1 mb-0">@Html.Sitecore().Field(review.Fields[Templates.Review.Fields.UsernameFieldID].Name, review)</h5>
+                                        <span class="g-color-gray-dark-v4 g-font-size-12">@dateTimeField.DateTime.ToString("yyyy/MM/dd HH:mm:ss")</span>
+                                    </div>
+
+                                    <p>@Html.Sitecore().Field(review.Fields[Templates.Review.Fields.CommentFieldID].Name, review)</p>
+
+                                    <ul class="list-inline d-sm-flex my-0">
+                                        <li class="list-inline-item g-mr-20">
+                                            <a class="u-link-v5 g-color-gray-dark-v4 g-color-primary--hover" href="#!">
+                                                
+                                                <i class="fa fa-star">@Html.Sitecore().Field(review.Fields[Templates.Review.Fields.RatingFieldID].Name, review)</i>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                        }
+                        else
+                        {
+                            <h1>Product does not have any reviews</h1>
+                        }
+
+                    }
+
+                }
+            }
+        </div>
+    </div>
+</div>
+
+
+<style type="text/css">
+    body {
+        margin-top: 20px;
+        background: #eee;
+    }
+
+    .g-height-50 {
+        height: 50px;
+    }
+
+    .g-width-50 {
+        width: 50px !important;
+    }
+
+    .g-bg-secondary {
+        background-color: #fafafa !important;
+    }
+
+    .u-shadow-v18 {
+        box-shadow: 0 5px 10px -6px rgba(0, 0, 0, 0.15);
+    }
+
+    .g-color-gray-dark-v4 {
+        color: #777 !important;
+    }
+
+    .g-font-size-12 {
+        font-size: 0.85714rem !important;
+    }
+
+    .media-comment {
+        margin-top: 20px
+    }
+    /*.commentSection {
+        border: 3px solid black;
+        border-radius: 10px;
+        background-color: #f2f2f2;
+    }*/
+</style>
+

@@ -1,4 +1,5 @@
 ﻿using BeerSorter.Feature.Header.Models;
+using Sitecore.Security.Authentication;
 using System.Web.Mvc;
 
 namespace BeerSorter.Feature.Header.Controllers
@@ -14,9 +15,14 @@ namespace BeerSorter.Feature.Header.Controllers
                 Page = new MenuViewModel(homeItem),
                 LogoID = Templates.Header.Fields.LogoFieldID.ToString()
             };
-
+            
 
             return View(headerModel);
+        }
+        public ActionResult Logout()
+        {
+            AuthenticationManager.Logout();
+            return Redirect("/Beers");
         }
     }
 }

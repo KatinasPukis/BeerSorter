@@ -1,0 +1,74 @@
+﻿@using Sitecore.Mvc
+@using Sitecore.Data.Items
+@using Sitecore.Mvc.Presentation
+@using Sitecore.Data.Fields
+@using Sitecore
+@using BeerSorter.Feature.BeerDetails
+@model BeerSorter.Feature.BeerDetails.Models.BeerModel
+
+
+<section class="py-5">
+    <div class="container px-4 px-lg-5 my-5">
+        <div class="row gx-4 gx-lg-5 align-items-center">
+            <div class="col-md-6"><img class="img-fluid" src="@Model.Image" alt="..." /></div>
+            <div class="col-md-6">
+                <div class="small mb-1">@Model.CountryOfOrigin</div>
+                <h1 class="display-5 fw-bolder">@Model.Name/@Model.Volume L</h1>
+                <div class="fs-5 mb-5">
+                    <span class="text-decoration-line-through">@Model.Price &euro;</span>
+                </div>
+                <hr />
+                <p class="lead">@Html.Raw(@Model.Description)</p>
+                <hr />
+                <div class="row">
+
+                    <div class="col-12 col-md-6">
+                        <p class="font-weight-bold">Kind:</p>
+
+                        <p> @Model.Kind</p>
+
+                    </div>
+
+
+                    <div class="col-12 col-md-6">
+                        <p class="font-weight-bold">Alcohol:</p>
+                        <p> @Model.AlcoholStrenght&percnt;</p>
+                    </div>
+
+                    <!-- Force next columns to break to new line -->
+                    <div class="w-100"></div>
+
+                    <div class="col-12 col-md-6">
+                        <p class="font-weight-bold">Style:</p>
+                        <p> @Model.Style</p>
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <p class="font-weight-bold">Packaging:</p>
+                        <p> @Model.Packaging</p>
+                    </div>
+                    <div class="w-100"></div>
+                    <div class="col-12 col-md-6">
+                        <p class="font-weight-bold">Volume:</p>
+                        <p> @Model.Volume L</p>
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <p class="font-weight-bold">Rating:</p>
+                        <p> @Model.Rating&#9733;</p>
+                    </div>
+                </div>
+
+            </div>
+
+
+
+        </div>
+    </div>
+</section>
+<style>
+    .col-12 {
+        display: flex;
+        background-color: #fafafc;
+    }
+</style>
+
+@*174x420*@

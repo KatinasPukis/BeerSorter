@@ -1,0 +1,107 @@
+﻿@using Sitecore.Mvc
+@using Sitecore.Data.Items;
+@using Sitecore.Mvc.Presentation
+@using Sitecore.Data.Fields
+@using BeerSorter.Feature.BeerList
+@using BeerSorter.Foundation.Core.Extentions
+@model BeerSorter.Feature.BeerList.Models.BeerViewModel
+<head>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/css/bootstrap-select.css" />
+
+</head>
+<section>
+    <section style="background-color: #eee;">
+        <div class="text-center container py-5">
+            <h4 class="mt-4 mb-5"><strong>Recommended</strong></h4>
+
+            <div class="row" id="myTable">
+                @{
+
+
+                    foreach (var beer in Model.BeerItems)
+                    {
+
+                        <div class="col-lg-4 col-md-12 mb-4">
+                            <a href="@beer.LinkToSelf" target="_blank">
+                                <div class="shadow-sm card">
+                                    <div class="bg-image hover-zoom ripple ripple-surface ripple-surface-light"
+                                         data-mdb-ripple-color="light">
+                                        <img src="@beer.Image"
+                                             class="w-50" />
+
+                                        <div class="mask">
+                                            <div>
+
+                                                <p class="text-left">Kind: @beer.Kind</p>
+
+                                            </div>
+                                            <div>
+
+                                                <p class="text-left">Style: @beer.Style</p>
+
+                                            </div>
+                                            <div>
+                                                <p class="text-left">Country: @beer.CountryOfOrigin</p>
+                                            </div>
+                                            <div>
+                                                <p class="text-left">Rating:@beer.Rating&#9733;</p>
+                                            </div>
+                                            <hr>
+                                        </div>
+                                        <div class="hover-overlay">
+                                            <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+                                        </div>
+
+                                    </div>
+                                    <div class="card-body">
+                                        <a href="" class="text-reset">
+                                            <h5 class="card-title mb-3" beer-name>@beer.Name</h5>
+                                        </a>
+                                        <h6 class="mb-3">@beer.Price &euro;</h6>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    }
+                }
+            </div>
+
+        </div>
+    </section>
+</section>
+
+
+
+
+<script language="javascript" type="text/javascript">
+
+    const searchInput = document.querySelector("[data-search]")
+    const beers = document.getElementById('myTable')
+    const beer = document.getElementById('beer')
+    searchInput.addEventListener("input", (e) => {
+        const value = e.target.value
+        console.log(value)
+        console.log("alus", beer.value)
+
+    })
+    //function filterBeer() {
+    //    const searchInput = document.querySelector('#[data-search]')
+    //    const filter = searchInput.value.toLowerCase()
+    //}
+
+    function filterFunction() {
+        var input, filter, beer;
+
+
+    }
+    if (window.history.replaceState) {
+        window.history.replaceState(null, null, window.location.href);
+    }
+</script>
+<style>
+    .hide {
+        display: none;
+    }
+</style>

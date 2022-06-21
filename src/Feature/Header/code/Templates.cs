@@ -6,8 +6,8 @@ namespace BeerSorter.Feature.Header
     {
         public static class Home
         {
-            public static readonly ID HomeItemID = new ID("{110D559F-DEA5-42EA-9C1C-8A5DF7E70EF9}");
-            public static readonly ID HomePageTemplatesID = new ID("{76036F5E-CBCE-46D1-AF0A-4143F9B557AA}");
+            public static readonly ID HomeItemID = new ID("{1D2832D3-0BBF-4373-8380-56B17AB26361}");
+            public static readonly ID HomePageTemplatesID = new ID("{58FFD4BF-5F5D-4FA0-8F8A-70B37F2D7243}");
         }
         public static class Header
         {

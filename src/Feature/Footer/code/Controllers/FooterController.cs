@@ -24,14 +24,14 @@ namespace BeerSorter.Feature.Footer.Controllers
             return View(footerModel);
         }
 
-        public List<Item> GetLinkFields()
+        private List<Item> GetLinkFields()
         {
             List<Item> footerLinksFolders = ContextItem.Axes.GetDescendants().Where(d => d.TemplateID.Equals(Templates.Footer.FooterLinksFolder)).ToList();
 
             return footerLinksFolders;
         }
 
-        public List<Item> GetImages()
+        private List<Item> GetImages()
         {
             List<Item> footerImagesFolders = ContextItem.Axes.GetDescendants().Where(m => m.TemplateID.Equals(Templates.Footer.FooterImagesFolder)).ToList();
 
