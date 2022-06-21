@@ -62,45 +62,6 @@ namespace BeerSorter.Feature.Login.Controllers
             }
             var user = AuthenticationManager.GetActiveUser();
             return user;
-            //if (Sitecore.Security.Accounts.User.Exists(model.Username))
-            //{
-            //    Sitecore.Security.Accounts.User user =
-            //      Sitecore.Security.Accounts.User.FromName(model.Username, true);
-            //    using (new Sitecore.Security.Accounts.UserSwitcher(user))
-            //    {
-
-            //        //Write your Logic here
-            //    }
-            //}
-            //bool isAuthenticated = false;
-            //try
-            //{
-            //    if (Sitecore.Security.Accounts.User.Exists(model.Username))
-            //    {
-            //        isAuthenticated = Sitecore.Security.Authentication.AuthenticationManager.Login(model.Username, model.Password, false);
-            //    }
-            //}
-            //catch (Exception ex)
-            //{
-            //    isAuthenticated = false;
-            //}
-            //return isAuthenticated;
-        }
-        public static bool AuthenticateUser(string username, string password)
-        {
-            bool isAuthenticated = false;
-            try
-            {
-                if (Sitecore.Security.Accounts.User.Exists(username))
-                {
-                    isAuthenticated = Sitecore.Security.Authentication.AuthenticationManager.Login(username, password, false);
-                }
-            }
-            catch (Exception ex)
-            {
-                isAuthenticated = false;
-            }
-            return isAuthenticated;
         }
         private UserLoginModel GetDataFromForm()
         {

@@ -10,7 +10,7 @@
                         <div class="card-body p-5">
                             <h2 class="text-uppercase text-center mb-5">Create an account</h2>
 
-                            <form id="commentForm" method="post" target="/Beers" >
+                            <form id="commentForm" method="post">
 
                                 <div class="form-outline mb-4">
                                     <input type="text" id="username" name="username" class="form-control form-control-lg" required />
@@ -42,7 +42,7 @@
                                 </div>
 
                                 <div class="d-flex justify-content-center">
-                                    <button type="submit" value="Submit" class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">
+                                    <button type="submit" onclick="myFunction()" value="Submit" class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">
                                         Register
                                     </button>
                                     <input type="hidden" name="CommentSubmitted" value="true">
@@ -63,31 +63,9 @@
     </div>
 </section>
 <script language="javascript" type="text/javascript">
-    if (window.history.replaceState) {
-        window.history.replaceState(null, null, window.location.href);
-    }
-
-    function verifyPassword() {
-        var pw = document.getElementById("password").value;
-        //check empty password field
-        if (pw == "") {
-            document.getElementById("message").innerHTML = "**Fill the password please!";
-            return false;
-        }
-
-        //minimum password length validation
-        if (pw.length < 8) {
-            document.getElementById("message").innerHTML = "**Password length must be atleast 8 characters";
-            return false;
-        }
-
-        //maximum length of password validation
-        if (pw.length > 8) {
-            document.getElementById("message").innerHTML = "**Password length must not exceed 15 characters";
-            return false;
-        } else {
-            alert("Password is correct");
-        }
+    
+    function myFunction() {
+        window.location.href = "https://beersortersc.dev.local/Login";
     }
 
 

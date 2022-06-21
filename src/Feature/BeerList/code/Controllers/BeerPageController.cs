@@ -27,7 +27,6 @@ namespace BeerSorter.Feature.BeerList.Controllers
         // GET: BeerPage
         public ActionResult Index()
         {
-
             if (CheckIfPost() == true)
             {
                 var beerdata = GetDataFromForm();
@@ -51,14 +50,9 @@ namespace BeerSorter.Feature.BeerList.Controllers
             var beerItemList = new List<BeerItemModel>();
             try
             {
-
-
                 foreach (var item in beerList.BeerItems)
                 {
-
                     beerItemList.Add(item);
-
-
                 }
                 if(searchbeer.AlcoholStrenght != 0)
                 {
@@ -104,40 +98,28 @@ namespace BeerSorter.Feature.BeerList.Controllers
                     beerItemList = beerItemList.Where(x => Double.Parse(x.Rating) <= ratingTo).ToList();
 
                 }
-
-                //newList.BeerItems = beerItemList.Where(x => x.Packaging == searchbeer.Packaging || x.Style == searchbeer.Style || x.CountryOfOrigin == searchbeer.CountryOfOrigin || x.Kind == searchbeer.Kind).ToList();
                 newList.BeerItems = beerItemList;
             }
             catch (Exception ex)
             {
                 Sitecore.Diagnostics.Log.Error("error", ex);
             }
-
-
-
             return newList;
         }
         private bool CheckIfPost() //checks if the http request is post
         {
             if (HttpContext.Request.HttpMethod == REQUEST_METHOD_FIELD) // if post then move forwatd
             {
-
                 return true;
-
-
-
             }
             return false;
         }
         private BeerItemModel GetDataFromForm()
         {
-
             NameValueCollection nvc = Request.Form;
             var model = new BeerItemModel();
 
-
             if (!string.IsNullOrEmpty(nvc[STYLE_FIELD]))
-
             {
                 model.Style = nvc[STYLE_FIELD];
             }
@@ -180,9 +162,7 @@ namespace BeerSorter.Feature.BeerList.Controllers
 
         private List<BeerItemModel> GetBeers()
         {
-
             var beerList = new List<BeerItemModel>();
-
 
             foreach (Item item in Sitecore.Context.Item.Children.Where(c => c.IsItemDerived(Templates.BeerList.BeerTemplateID)))
             {
@@ -209,7 +189,8 @@ namespace BeerSorter.Feature.BeerList.Controllers
                 Packaging = beer[Templates.BeerList.Fields.PackagingFieldID],
                 Volume = Double.Parse(beer[Templates.BeerList.Fields.VolumeFieldID]),
                 LinkToSelf = LinkToSelf,
-                Rating = Math.Round(Double.Parse(beer[Templates.BeerList.Fields.RatingFieldID]),2).ToString()
+                Rating = beer[Templates.BeerList.Fields.RatingFieldID]
+                //Math.Round(Double.Parse(beer[Templates.BeerList.Fields.RatingFieldID]),2).ToString()
 
             };
         }

@@ -94,17 +94,5 @@ namespace BeerSorter.Feature.BeerDetails.Controllers
             return Math.Round(OverallRating, 2);
 
         }
-        //private List<Item> GetKind()
-        //{
-        //    List<Item> kinds = new List<Item>();
-        //    string[] identifications = CurrentItem[Templates.BeerDetails.Fields.KindFieldID].Split(new[] {"|"},StringSplitOptions.None);
-        //    foreach (var id in identifications)
-        //    {
-        //        kinds.Add(Sitecore.Context.Database.GetItem(id));
-        //    }
-
-        //    return kinds;
-
-        //}
     }
 }

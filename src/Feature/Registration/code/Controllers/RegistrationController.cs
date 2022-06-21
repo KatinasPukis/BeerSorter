@@ -28,11 +28,6 @@ namespace BeerSorter.Feature.Registration.Controllers
             CheckIfPost();
             return View();
         }
-        public ActionResult Redirect()
-        {
-            
-            return Redirect("/Beers");
-        }
         private void CheckIfPost() //checks if the http request is post
         {
             if (HttpContext.Request.HttpMethod == REQUEST_METHOD_FIELD) // if post then move forwatd
@@ -47,7 +42,7 @@ namespace BeerSorter.Feature.Registration.Controllers
             }
         }
         // Simple code version no checks, just to test the user creation, roles not added
-        private void CreateUser()
+        private ActionResult CreateUser()
         {
             var model = GetDataFromForm();
             string domain = @"extranet";
@@ -72,6 +67,7 @@ namespace BeerSorter.Feature.Registration.Controllers
             {
                 Sitecore.Diagnostics.Log.Error(string.Format("Error in Client.Project.Security.UserMaintenance (AddUser): Message: {0}; Source:{1}", ex.Message, ex.Source), this);
             }
+            return Redirect("https://beersortersc.dev.local/Login");
 
         }
         private UserRegistrationModel GetDataFromForm()
@@ -112,8 +108,6 @@ namespace BeerSorter.Feature.Registration.Controllers
 
             return model;
         }
-        //--------------------------------------------------------------------------------------------------------------------------------------
-
 
     }
 }

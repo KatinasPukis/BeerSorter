@@ -13,7 +13,6 @@ namespace BeerSorter.Feature.BeerList.Controllers
 {
     public class BeerListRecommendedController : Controller
     {
-        public const string DEFAULT_PERSONALIZATION = "Default";
         // GET: BeerListRecommended
         public ActionResult Index()
         {
@@ -39,7 +38,7 @@ namespace BeerSorter.Feature.BeerList.Controllers
 
             foreach (Item item in Sitecore.Context.Item.Children.Where(c => c.IsItemDerived(Templates.BeerList.BeerTemplateID)))
             {
-                if(item.Fields[Templates.BeerList.Fields.StyleFieldID].Value==datasource.DisplayName.ToString())
+                if(item.Fields[Templates.BeerList.Fields.StyleFieldID].Value==datasource.Name.ToString())
                 {
                     beerList.Add(AddBeerItemModel(item));
                 }

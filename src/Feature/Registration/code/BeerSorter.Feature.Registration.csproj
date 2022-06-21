@@ -7,7 +7,7 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{07741BA5-22D9-4E25-AEF1-E2ED316D313E}</ProjectGuid>
+    <ProjectGuid>{60A07149-F8E7-4436-9C00-33322289654E}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -108,11 +108,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Views\Index.cshtml" />
     <Content Include="Views\Registration\Index.cshtml" />
     <None Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controllers\Base\BaseController.cs" />
     <Compile Include="Controllers\RegistrationController.cs" />
     <Compile Include="Models\UserRegistrationModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -141,7 +141,7 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>52593</DevelopmentServerPort>
+          <DevelopmentServerPort>60277</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>https://localhost:44368/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
